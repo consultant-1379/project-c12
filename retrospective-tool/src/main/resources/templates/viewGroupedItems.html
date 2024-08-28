@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Items</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container text-center">
+    <div>
+        <h1>Grouped Items</h1>
+    </div>
+
+    <div>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th th:text="${titleOne}"></th>
+                <th th:text="${titleTwo}"></th>
+                <th th:text="${titleThree}"></th>
+                <th th:text="${titleFour}"></th>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Contents</th>
+                            <th>Score (Votes)</th>
+                            <th th:unless="${retrospective.locked}"></th>
+                            <th th:unless="${retrospective.locked}"></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item: ${listOne}">
+                            <td th:text="${item.id}">Id</td>
+                            <td th:text="${item.title}">Title</td>
+                            <td th:text="${item.contents}">Contents</td>
+                            <td th:text="${item.votes}">Score</td>
+                            <td th:unless="${retrospective.locked}"><a th:href="${'upvote?id=' + item.id}" role="button">Upvote</a></td>
+                            <td th:unless="${retrospective.locked}"><a th:href="${'downvote?id=' + item.id}" role="button">Downvote</a></td>
+                            <td><a th:href="${'getComments?id=' + item.id}" role="button">Comments</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Contents</th>
+                            <th>Score (Votes)</th>
+                            <th th:unless="${retrospective.locked}"></th>
+                            <th th:unless="${retrospective.locked}"></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item: ${listTwo}">
+                            <td th:text="${item.id}">Id</td>
+                            <td th:text="${item.title}">Title</td>
+                            <td th:text="${item.contents}">Contents</td>
+                            <td th:text="${item.votes}">Score</td>
+                            <td th:unless="${retrospective.locked}"><a th:href="${'upvote?id=' + item.id}" role="button">Upvote</a></td>
+                            <td th:unless="${retrospective.locked}"><a th:href="${'downvote?id=' + item.id}" role="button">Downvote</a></td>
+                            <td><a th:href="${'getComments?id=' + item.id}" role="button">Comments</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Contents</th>
+                            <th>Score (Votes)</th>
+                            <th th:unless="${retrospective.locked}"></th>
+                            <th th:unless="${retrospective.locked}"></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item: ${listThree}">
+                            <td th:text="${item.id}">Id</td>
+                            <td th:text="${item.title}">Title</td>
+                            <td th:text="${item.contents}">Contents</td>
+                            <td th:text="${item.votes}">Score</td>
+                            <td th:unless="${retrospective.locked}"><a th:href="${'upvote?id=' + item.id}" role="button">Upvote</a></td>
+                            <td th:unless="${retrospective.locked}"><a th:href="${'downvote?id=' + item.id}" role="button">Downvote</a></td>
+                            <td><a th:href="${'getComments?id=' + item.id}" role="button">Comments</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Contents</th>
+                            <th>Score (Votes)</th>
+                            <th th:unless="${retrospective.locked}"></th>
+                            <th th:unless="${retrospective.locked}"></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item: ${listFour}">
+                            <td th:text="${item.id}">Id</td>
+                            <td th:text="${item.title}">Title</td>
+                            <td th:text="${item.contents}">Contents</td>
+                            <td th:text="${item.votes}">Score</td>
+                            <td th:unless="${retrospective.locked}"><a th:href="${'upvote?id=' + item.id}" role="button">Upvote</a></td>
+                            <td th:unless="${retrospective.locked}"><a th:href="${'downvote?id=' + item.id}" role="button">Downvote</a></td>
+                            <td><a th:href="${'getComments?id=' + item.id}" role="button">Comments</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button type="button" style="float: left;"><a th:href="${'/item/view?id=' + retroId}">Back</a></button>
+    <button th:unless="${retrospective.locked}" type="button" style="float: left;"><a th:href="@{/item/update}">Update Item Progress</a></button>
+    <button th:unless="${retrospective.locked}" type="button" style="float: left;"><a th:href="${'/item/create?id=' + retroId}">Create Item</a>
+</div>
+</body>
+</html>

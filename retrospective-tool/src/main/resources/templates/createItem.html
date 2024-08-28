@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Create Item</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container text-center">
+    <h1>Create Item</h1>
+    <form action="#" th:action="@{/item/add}" method="post">
+        <input type="hidden" name="id" th:value="${retroId}" />
+        <p>Title: <input type="text" name="title" field="*{title}" /></p>
+        <p>Contents: <input type="text" name="contents" field="*{contents}" /></p>
+        <select name="category" id="category">
+            <option value="MAD">Mad</option>
+            <option value="GLAD">Glad</option>
+            <option value="SAD">Sad</option>
+        </select>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <a th:href="@{/}">Back</a>
+</div>
+
+</body>
+</html>

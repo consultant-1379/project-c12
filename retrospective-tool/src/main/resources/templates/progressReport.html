@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Progress Report</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container text-center">
+    <div>
+        <h1>Progress Report</h1>
+    </div>
+    <br><br>
+    <h3 th:text="'The sprint is '+${progress}+'% complete'"></h3>
+    <ul style="list-style-type:none;">
+        <li><h4 th:text="${listItemsSize}+' total items'"></h4></li>
+        <li><h4  th:text="${#lists.size(complete)}+' items complete'"></h4></li>
+        <li><h4  th:text="${#lists.size(progress)}+' items in progress'"></h4></li>
+        <li><h4 th:text="${#lists.size(todo)}+' items not started yet'"></h4></li>
+        <li><h4 th:text="${#lists.size(none)}+' items unassigned'"></h4></li>
+    </ul>
+    <br><br>
+    <div>
+        <h2>Item States</h2>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th th:text="'Complete '+${#lists.size(complete)}+' of '+${listItemsSize}"></th>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Contents</th>
+                            <th>Comments</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item: ${complete}">
+                            <td th:text="${item.title}">Title</td>
+                            <td th:text="${item.contents}">Contents</td>
+                            <td><a th:href="${'getComments?id=' + item.id}" role="button">Comments</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th th:text="'In Progress '+${#lists.size(progress)}+' of '+${listItemsSize}"></th>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Contents</th>
+                            <th>Comments</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item: ${inProgress}">
+                            <td th:text="${item.title}">Title</td>
+                            <td th:text="${item.contents}">Contents</td>
+                            <td><a th:href="${'getComments?id=' + item.id}" role="button">Comments</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th th:text="'To Do '+${#lists.size(todo)}+' of '+${listItemsSize}"></th>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Contents</th>
+                            <th>Comments</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item: ${todo}">
+                            <td th:text="${item.title}">Title</td>
+                            <td th:text="${item.contents}">Contents</td>
+                            <td><a th:href="${'getComments?id=' + item.id}" role="button">Comments</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th th:text="'Unassigned '+${#lists.size(none)}+' of '+${listItemsSize}"></th>
+            </tr>
+            <tr>
+                <td>
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Title</th>
+                            <th>Contents</th>
+                            <th>Comments</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item: ${none}">
+                            <td th:text="${item.title}">Title</td>
+                            <td th:text="${item.contents}">Contents</td>
+                            <td><a th:href="${'getComments?id=' + item.id}" role="button">Comments</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <button type="button" style="float: left;"><a th:href="${'/item/view?id=' + retroId}">Back</a></button>
+</div>
+</body>
+</html>

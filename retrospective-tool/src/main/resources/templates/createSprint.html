@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Create Sprint</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="header :: header"></div>
+
+<div class="container text-center">
+    <h1>Create Item</h1>
+    <form action="#" th:action="@{/sprint/add}" method="post">
+        <p>Sprint Name: <input type="text" name="name" field="*{name}" /></p>
+        <p>Goals: <input type="text" name="goals" field="*{goals}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <a th:href="@{/}">Back</a>
+</div>
+
+</body>
+</html>

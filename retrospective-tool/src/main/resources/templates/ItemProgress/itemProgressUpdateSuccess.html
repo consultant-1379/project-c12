@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Item Progress Updated Success</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container text-center">
+    <h3>Item Progress Updated Success</h3>
+    <h4><a th:href="${'/item/view?id=' + retroId}">Back</a></h4>
+</div>
+
+<div class="container text-center">
+    <h4><a th:href="@{/retrospectiveTool/all}">List retrospectives</a></h4>
+</div>
+
+</body>
+</html>

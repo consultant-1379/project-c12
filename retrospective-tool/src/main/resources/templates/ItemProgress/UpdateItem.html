@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Item Update</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+<div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post">
+
+            <input type="submit" value="Back" />
+        </form>
+    </div>
+    <div>
+        <h1>Item Update</h1>
+    </div>
+
+
+
+
+    <form th:action="@{/item/updateProgress}"
+          method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Item id to be updated</label>
+                <div class="col-8">
+                    <input type="number" th:name="id"/>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Item progress</label>
+                <div class="col-8">
+                    <select th:name="progress" >
+                        <option value="TODO">TODO</option>
+                        <option value="INPROGRESS">INPROGRESS</option>
+                        <option value = "COMPLETE" > COMPLETE</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+</div>
+</body>
+</html>

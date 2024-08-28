@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Create Team</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div th:replace="header :: header"></div>
+
+<div class="container text-center">
+    <h1>Create Team</h1>
+    <form action="#" th:action="@{/team/add}" method="post">
+        <p>Team Name: <input type="text" name="name" field="*{name}" /></p>
+        <p>Select Team Members
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Member ID</th>
+                    <th>E-mail</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Select</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="member: ${members}">
+                    <td th:text="${member.employeeNumber}">Member ID</td>
+                    <td th:text="${member.email}">E-mail</td>
+                    <td th:text="${member.firstName}">First Name</td>
+                    <td th:text="${member.surname}">Last Name</td>
+                    <td><input type="checkbox" name="employeeNumbers" th:value="${member.employeeNumber}"></td>
+                </tr>
+                </tbody>
+            </table>
+<!--            <input type="text" name="contents" field="*{contents}" />-->
+        </p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <a th:href="@{/}">Back</a>
+</div>
